@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    password: yhx742446272
+    username: root
+    url: jdbc:mysql://3l43723a04.wicp.vip:37980/project_mall?serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    thymeleaf:
+      cache: false
+      prefix: classpath:/templates/
+      suffix: .html
+      mode: HTML5
+      encoding: UTF-8
+      content-type: text/html
+
+mybatis:
+  config-location: classpath:/mybatis/mybatis.xml
+  mapper-locations: classpath:/mybatis/mapper/*.xml
