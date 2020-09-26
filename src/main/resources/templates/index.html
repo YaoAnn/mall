@@ -9,20 +9,32 @@
 <body><!------------------------------head------------------------------>
 <div class="head">
     <div class="wrapper clearfix">
-        <div class="clearfix" id="top"><h1 class="fl"><a href="toindex"><img src="img/logo.png" height="80"/></a></h1>
+        <div class="clearfix" id="top">
+            <h1 class="fl">
+                <a href="toindex">
+                    <img src="img/logo.png" height="80"/>
+                </a>
+            </h1>
             <div class="fr clearfix" id="top1">
-                <div class="fl" th:if="${user == null}">
-                    <a href="tologin" id="login">登录</a>
-                    <a href="#" id="reg">注册</a>
+                <span class="fl" th:if="${session.user == null}" >
+                    <a href="tologin" id="login" style="font-size: xx-large;color: blue">登录</a>
+                    <a href="toreg" id="reg" style="font-size: xx-large;color: blue">注册</a>
+                </span>
+                <span class="fl" th:if="${session.user != null}">
+                    <a style="font-size: xx-large;color: blue" th:href="tomyinfo" th:text="${ session.user.username }"></a>
+                </span>
+
+                <form action="#" method="get" class="fl">
+                    <input type="text" placeholder="热门搜索：青椒"/>
+                    <input type="button"/>
+                </form>
+
+                <div class="btn fl clearfix">
+                    <a href="tomyinfo"><img src="img/grzx.png"/></a>
+                    <a href="#" class="er1"><img src="img/ewm.png"/></a>
+                    <a href="cart.html"><img src="img/gwc.png"/></a>
+                    <p><a href="#"><img src="img/smewm.png"/></a></p>
                 </div>
-                <div class="fl" th:if="${user != null}">
-                    <p th:text="${ user.username }"></p>
-                </div>
-                <form action="#" method="get" class="fl"><input type="text" placeholder="热门搜索：青椒"/><input
-                        type="button"/></form>
-                <div class="btn fl clearfix"><a href="mygxin.html"><img src="img/grzx.png"/></a><a href="#" class="er1"><img
-                        src="img/ewm.png"/></a><a href="cart.html"><img src="img/gwc.png"/></a>
-                    <p><a href="#"><img src="img/smewm.png"/></a></p></div>
             </div>
         </div>
         <ul class="clearfix" id="bott">
@@ -230,7 +242,7 @@
         <dt><img src="img/gt2.png"/></dt>
         <dd>联系<br/>客服</dd>
     </dl>
-</a><a href="mygxin.html">
+</a><a href="myinfo.html">
     <dl>
         <dt><img src="img/gt3.png"/></dt>
         <dd>个人<br/>中心</dd>

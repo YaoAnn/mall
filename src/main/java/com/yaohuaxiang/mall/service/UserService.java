@@ -8,4 +8,6 @@ import com.yaohuaxiang.mall.bean.User;
  */
 public interface UserService {
     User getUserByUsernameAndPassword(String username , String password);
+
+    void insertUser(User user);
 }
