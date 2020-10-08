@@ -28,62 +28,46 @@ public class ManageController {
     ManageService manageService;
 
     @RequestMapping("")
-    public String manageIndex(){
+    public String manageIndex() {
         return "/manage/index";
     }
 
     @RequestMapping("/users/{pageNum}")
-    public String manageUsers(@PathVariable("pageNum")Integer pageNum, Model model, HttpServletRequest httpServletRequest){
-        PageUtil<User> pageUtil =new PageUtil<>();
-        PageHelper.startPage(pageNum,2);
+    public String manageUsers(@PathVariable("pageNum") Integer pageNum, Model model, HttpServletRequest httpServletRequest) {
+        PageUtil<User> pageUtil = new PageUtil<>();
+        PageHelper.startPage(pageNum, 2);
         List<User> users = manageService.getAllUser();
 
-        PageInfo<User> pageInfo = new PageInfo<User>(users,3);
+        PageInfo<User> pageInfo = new PageInfo<User>(users, 3);
         String info = pageUtil.getPageInfo(pageInfo, httpServletRequest, "manage/users");
-        model.addAttribute("users",users);
-        model.addAttribute("info",info);
+        model.addAttribute("users", users);
+        model.addAttribute("info", info);
         return "/manage/users";
     }
-    @RequestMapping("tologin")
-    public String manageToLogin(){
+
+    @RequestMapping("/tologin")
+    public String manageToLogin() {
         return "/manage/login";
     }
 
-    @RequestMapping("login")
-    public String manageLogin(String name , String  password , Model model){
+    @RequestMapping("/login")
+    public String manageLogin(String name, String password, Model model) {
         Manager manager = manageService.getManager(name, password);
-        if(manager != null){
-            model.addAttribute("manager",manager);
+        if (manager != null) {
+            model.addAttribute("manager", manager);
             return "/manage/index";
-        }else{
-            model.addAttribute("err","用户名或密码不正确");
+        } else {
+            model.addAttribute("err", "用户名或密码不正确");
             return "/manage/login";
         }
     }
 
-  /*  @RequestMapping("manage/{pageNum}")
-    public String manage(Model model, HttpServletRequest httpServletRequest, @PathVariable("pageNum") Integer pageNum) {
-        PageUtil<User> pageUtil = new PageUtil<>();
-        PageHelper.startPage(pageNum, 2);
-        List<User> userList = manageService.getAllUser();
-
-        PageInfo<User> pageInfo = new PageInfo<>(userList, 2);
-        String info = pageUtil.getPageInfo(pageInfo, httpServletRequest, "manage");
-        model.addAttribute("userlist", userList);
-        model.addAttribute("pageInfo", info);
-        return "manage_index";
+    @RequestMapping("/update/{uid}")
+    public String manageUpdateByUid(@PathVariable("uid") Integer uid , Model model){
+        User user = manageService.getUserByUid(uid);
+        model.addAttribute("user",user);
+        return "/manage/updateUser";
     }
-
-    @RequestMapping("manage")
-    public String manager(HttpServletRequest httpServletRequest, HttpServletResponse response) {
-        try {
-            String path = httpServletRequest.getServletPath();
-            response.sendRedirect(path + "/1");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }*/
 }
 
 

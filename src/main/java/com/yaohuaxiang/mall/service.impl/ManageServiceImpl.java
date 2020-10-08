@@ -28,4 +28,9 @@ public class ManageServiceImpl implements ManageService {
     public Manager getManager(String name, String password) {
         return manageMapper.getManager(name,password);
     }
+
+    @Override
+    public User getUserByUid(Integer uid) {
+        return manageMapper.getUserByUid(uid);
+    }
 }

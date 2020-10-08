@@ -12,4 +12,5 @@ import java.util.List;
 public interface ManageService {
     List<User> getAllUser();
     Manager getManager(String name , String password);
+    User getUserByUid(Integer uid);
 }
