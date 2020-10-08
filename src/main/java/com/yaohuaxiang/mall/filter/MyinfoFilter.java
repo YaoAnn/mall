@@ -15,7 +15,7 @@ import java.io.IOException;
  * @create 2020/9/25 - 11:44
  */
 
-@WebFilter(filterName = "myFilter",urlPatterns = "/tomyinfo")
+@WebFilter(filterName = "myFilter", urlPatterns = "/tomyinfo")
 public class MyinfoFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -27,10 +27,10 @@ public class MyinfoFilter implements Filter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
         HttpSession session = httpServletRequest.getSession();
-        if(session.getAttribute("user") == null){
+        if (session.getAttribute("user") == null) {
             httpServletResponse.sendRedirect("tologin");
-        }else{
-            chain.doFilter(httpServletRequest,httpServletResponse);
+        } else {
+            chain.doFilter(httpServletRequest, httpServletResponse);
         }
     }
 

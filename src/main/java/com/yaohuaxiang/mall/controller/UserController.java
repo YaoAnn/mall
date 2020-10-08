@@ -20,53 +20,58 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping("/tologin")
+    /*@RequestMapping("/tologin")
     public String tologin() {
         return "login";
     }
 
     @RequestMapping("/toindex")
-    public String toindex(){
+    public String toindex() {
         return "index";
     }
 
     @RequestMapping("/toreg")
-    public String toreg(){
+    public String toreg() {
         return "reg";
     }
 
     @RequestMapping("/toforget")
-    public String toforget(){
+    public String toforget() {
         return "forget";
     }
+
     @RequestMapping("/login")
-    public String login(String username , String password , HttpSession httpSession,Model model){
-        User user = userService.getUserByUsernameAndPassword(username,password);
-        if(user != null){
-            httpSession.setAttribute("user",user);
+    public String login(String username, String password, HttpSession httpSession, Model model) {
+        User user = userService.getUserByUsernameAndPassword(username, password);
+        if (user != null) {
+            httpSession.setAttribute("user", user);
             return "index";
-        }else{
-            model.addAttribute("err","用户名或密码错误");
+        } else {
+            model.addAttribute("err", "用户名或密码错误");
             return "login";
         }
     }
+
     @RequestMapping("/tomyinfo")
-    public String tomyinfo(){
+    public String tomyinfo() {
         return "myinfo";
     }
+
     @RequestMapping("/tomygrxx")
-    public String tomygrxx(){
+    public String tomygrxx() {
         return "mygrxx";
     }
+
     @RequestMapping("/exit")
-    public String exit(HttpSession httpSession){
+    public String exit(HttpSession httpSession) {
         httpSession.removeAttribute("user");
         return "redirect:toindex";
     }
+
     @RequestMapping("reg")
-    public String reg(User user){
+    public String reg(User user) {
         userService.insertUser(user);
         return "redirect:toindex";
     }
-
+*/
 }

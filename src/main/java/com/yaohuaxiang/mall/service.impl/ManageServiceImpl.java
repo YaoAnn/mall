@@ -1,5 +1,6 @@
 package com.yaohuaxiang.mall.service.impl;
 
+import com.yaohuaxiang.mall.bean.Manager;
 import com.yaohuaxiang.mall.bean.User;
 import com.yaohuaxiang.mall.mapper.ManageMapper;
 import com.yaohuaxiang.mall.service.ManageService;
@@ -17,8 +18,14 @@ import java.util.List;
 public class ManageServiceImpl implements ManageService {
     @Autowired(required = false)
     ManageMapper manageMapper;
+
     @Override
     public List<User> getAllUser() {
         return manageMapper.getAllUser();
+    }
+
+    @Override
+    public Manager getManager(String name, String password) {
+        return manageMapper.getManager(name,password);
     }
 }

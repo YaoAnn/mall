@@ -14,9 +14,10 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
     @Autowired(required = false)
     UserMapper userMapper;
+
     @Override
     public User getUserByUsernameAndPassword(String username, String password) {
-        return userMapper.getUserByUsernameAndPassword(username,password);
+        return userMapper.getUserByUsernameAndPassword(username, password);
     }
 
     @Override

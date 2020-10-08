@@ -2,7 +2,7 @@ spring:
   datasource:
     password: yhx742446272
     username: root
-    url: jdbc:mysql://3l43723a04.wicp.vip:37980/project_mall?serverTimezone=UTC
+    url: jdbc:mysql://43.226.148.127:3306/mall
     driver-class-name: com.mysql.cj.jdbc.Driver
 
     thymeleaf:
@@ -12,6 +12,10 @@ spring:
       mode: HTML5
       encoding: UTF-8
       content-type: text/html
+  redis:
+    host: 43.226.148.127
+    password: yhx742446272
+    port: 6379
 
 mybatis:
   config-location: classpath:/mybatis/mybatis.xml
